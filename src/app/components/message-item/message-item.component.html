@@ -1,0 +1,15 @@
+<!-- src/app/components/message-item/message-item.component.html -->
+<div class="message-bubble" [ngSwitch]="message.role">
+  
+  <!-- Caso seja uma mensagem de texto (usuário ou bot) -->
+  <p *ngSwitchCase="'user'">{{ message.text }}</p>
+  <p *ngSwitchCase="'model'">{{ message.text }}</p>
+
+  <!-- Caso seja o indicador de 'loading' -->
+  <div *ngSwitchCase="'loading'" class="loading-indicator">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+</div>
