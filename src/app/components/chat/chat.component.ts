@@ -27,7 +27,7 @@ export class ChatComponent implements OnInit {
   userId: string = '';
   private shouldScrollDown = false; // Flag para controlar a rolagem
 
-  chatTemperature: number = 0.5; // Valor padrão neutro
+  chatTemperature: number = 1.0; // Valor padrão neutro
 
   @ViewChild('messagesArea') private messagesArea!: ElementRef;
 
@@ -39,20 +39,20 @@ export class ChatComponent implements OnInit {
     localStorage.setItem('assisbot_userId', this.userId);
 
     // Recupera a temperatura salva, se existir
-    const savedTemp = localStorage.getItem('assisbot_temperature');
-    this.chatTemperature = savedTemp ? parseFloat(savedTemp) : 0.5;
+    const savedTemp = localStorage.getItem('piabot_temperature');
+    this.chatTemperature = savedTemp ? parseFloat(savedTemp) : 1.0;
 
 
     // Mensagem inicial de boas-vindas
     this.messages.push({
       role: 'model',
-      text: 'Daí! Eu sou o ELO, mas pode me chamar de Piá-bot. Sou seu canal de apoio aqui no IFPR. Manda a braba aí, no que posso te ajudar?'
+      text: 'Daí! Eu sou o ELO, mas pode me chamar de Piá-bot. Sou seu canal de apoio aqui no IFPR. No que posso te ajudar?'
     });
   }
 
   // Novo método para salvar a temperatura quando o slider muda
   onTemperatureChange(): void {
-    localStorage.setItem('assisbot_temperature', this.chatTemperature.toString());
+    localStorage.setItem('piabot_temperature', this.chatTemperature.toString());
   }
 
 
